@@ -1,36 +1,41 @@
 package com.company;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String max, min; //длииная строк
-
         Scanner scan = new Scanner(System.in);
         int n = Integer.parseInt(scan.nextLine());
 
-        String s = scan.nextLine();
-        min = s;
-        max = min;
-        n--;
+        int [][] A = new int [n][n];
+        float [][] Af = new float [n][n];
+        Random r = new Random();
+        int x = n - (-n);
+        float ar = 0;
 
-        while (n>0) {
-            s = scan.nextLine();
-            if (s.length()>max.length()) {
-                max = s;
-                //maxl = s.length();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                A[i][j] = r.nextInt(x + 1);
+                A[i][j] += (-n);
+                System.out.print(A[i][j] + "\t");
+                ar = ar + A[i][j];
             }
-            if (s.length()<min.length()) {
-                min = s;
-                //minl = s.length();
+            System.out.println();
+        }
+        ar = ar / (n*n);
+        System.out.println(ar);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Af[i][j] =  A[i][j] - ar;
+                System.out.print(Af[i][j] + "\t");
             }
-            n--;
+            System.out.println();
         }
 
-        System.out.println(min + " " + min.length());
-        System.out.println(max + " " + max.length());
 
     }
 }
